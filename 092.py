@@ -1,6 +1,6 @@
 # answer is 8581146
 # timed ~ 38 seconds
-import time
+
 from collections import defaultdict
 
 cached_results = defaultdict(int)
