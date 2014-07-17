@@ -10,8 +10,8 @@ limit = 10 ** 7
 def digit_squares_sum(n):
 	digit_sum = 0
 	while n:
-			digit_sum += cached_squares[n % 10]
-			n /= 10
+		digit_sum += cached_squares[n % 10]
+		n /= 10
 	return digit_sum
 
 def sad(current_number):
