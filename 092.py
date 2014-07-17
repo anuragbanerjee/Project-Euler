@@ -1,6 +1,6 @@
 # answer is 8581146
 # timed ~ 38 seconds
-import time
+
 from collections import defaultdict
 
 cached_results = defaultdict(int)
@@ -10,16 +10,15 @@ limit = 10 ** 7
 def digit_squares_sum(n):
 	digit_sum = 0
 	while n:
-			digit_sum += cached_squares[n % 10]
-			n /= 10
+		digit_sum += cached_squares[n % 10]
+		n /= 10
 	return digit_sum
 
 def sad(current_number):
 	current_chain = [current_number]
-	while current_number != 1 and current_number != 89:
+	while current_number not in [ 1, 89 ]:
 		if current_number in cached_results:
-			current_number = cached_results[current_number]
-			break
+			current_number = cached_results[current_number]; break
 		digit_sum = current_number = digit_squares_sum(current_number)
 		current_chain.append(digit_sum)
 	if current_number <= 1:
@@ -36,4 +35,4 @@ def main():
 			total += 1
 	return total
 
-main()
+print main()
