@@ -16,7 +16,7 @@ def digit_squares_sum(n):
 
 def sad(current_number):
 	current_chain = [current_number]
-	while current_number != 1 and current_number != 89:
+	while current_number not in [1, 89]:
 		if current_number in cached_results:
 			current_number = cached_results[current_number]; break
 		digit_sum = current_number = digit_squares_sum(current_number)
