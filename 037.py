@@ -1,5 +1,5 @@
 # answer is 748317
-# timed ~ 6.5 seconds
+# timed ~ 6.3 seconds
 
 def isprime(candidate):
 	if candidate == 2: return True
