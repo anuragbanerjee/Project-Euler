@@ -27,12 +27,12 @@ def find_xth_day_of_month(xth, months, current_year):
   return set(xth_days)
 
 # Finds the day of the year for each Sunday.
-def find_sundays(first, year, offset):
-  candidate = first + offset
+def find_sundays(first_sunday, current_year, leap_days):
+  candidate = first_sunday + leap_days
   while candidate < 1:
     candidate += 7
 
-  is_leap = is_leap_year(year)
+  is_leap = is_leap_year(current_year)
   sundays = set([candidate])
 
   for week in range(1, 53):
@@ -40,23 +40,23 @@ def find_sundays(first, year, offset):
     if 0 < new_sunday <= (366 if is_leap else 365):
       sundays.add(new_sunday)
 
-  offset -= (2 if is_leap else 1)
-  return sundays, offset
+  leap_days -= (2 if is_leap else 1)
+  return sundays, leap_days
 
 # Finds the number of Sundays that are the first of the month in the 20th century.
 def count_first_sundays(months):
   starting_year = current_year = 1900
+  ending_year = 2000
   first_sunday = 6
   offset = 0
 
   total = 0
 
-  while current_year <= 2000:
+  while current_year <= ending_year:
     firsts = find_xth_day_of_month(1, months, current_year)
-    sundays_raw = find_sundays(first_sunday, current_year, offset)
-    sundays, offset = sundays_raw[0], sundays_raw[1]
+    sundays, offset = find_sundays(first_sunday, current_year, offset)
 
-    if current_year != 1900:
+    if current_year != starting_year:
       total += len(sundays & firsts)
 
     current_year += 1
