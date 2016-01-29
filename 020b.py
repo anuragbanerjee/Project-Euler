@@ -1,0 +1,1 @@
+sum(int(x) % 10 for x in str(reduce(lambda a, n: a*n, range(1, 101), 1)))
