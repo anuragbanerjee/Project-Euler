@@ -9,7 +9,7 @@ def main():
   february_on_leap = lambda year: 29 if is_leap_year(year) else 28
 
   months = [31, february_on_leap, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-  print count_first_sundays(months)
+  print count_first_sundays(months, 1900, 2000)
 
 # Determines if a given year is a leap year. If it is a century and it's divisible by 400, then it is a leap year. If it's not a century and it's divisible by 4, then it is a leap year.
 def is_leap_year(year):
@@ -44,9 +44,8 @@ def find_sundays(first_sunday, current_year, leap_days):
   return sundays, leap_days
 
 # Finds the number of Sundays that are the first of the month in the 20th century.
-def count_first_sundays(months):
-  starting_year = current_year = 1900
-  ending_year = 2000
+def count_first_sundays(months, starting_year = 1900, ending_year = 2000):
+  current_year = starting_year
   first_sunday = 6
   offset = 0
 
